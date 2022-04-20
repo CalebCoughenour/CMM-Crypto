@@ -62,8 +62,6 @@ $(document).ready(function() {
       }
     );
   
-  
-
   });
   $('#rabbitHole').click(function(e) {
     e.preventDefault();
@@ -78,4 +76,6 @@ $(document).ready(function() {
       $('#show-errors').text(`There was an error processing your request: ${error}. Please try again.`);
     });
   });
-});
+});  
+
+
