@@ -87,7 +87,7 @@ body {
   background-color: lightgray;
 }
 
-.card-results {
+.card-results, .card-homer {
   display: none;
   margin-bottom: 20px;
   margin-left: auto;
@@ -107,3 +107,4 @@ body {
   text-align: center;
   font-size: large;
 }
+

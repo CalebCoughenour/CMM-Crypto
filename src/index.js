@@ -60,18 +60,20 @@ $(document).ready(function() {
       }
     );
   
+  
+
+  });
   $('#rabbitHole').click(function(e) {
     e.preventDefault();
     let promise = CatFact.getCatFact(); 
       promise.then(function(response) {
       const body = JSON.parse(response);
       console.log(body);
-      $('#catFact').text(`${body.fact}`);   
+      $('#catFact').text(`${body.fact}`);
+      $('.card-homer').show();   
     }, function(error) {
       $('.card-error').show();
       $('#show-errors').text(`There was an error processing your request: ${error}. Please try again.`);
-    })
-  });
-
+    });
   });
 });
