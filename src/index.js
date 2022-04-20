@@ -54,6 +54,8 @@ $(document).ready(function() {
       $('#volume').text(`${interval} Volume: ${userVolumeSimple}`);
       $('.card-results').show();
       $('.card-error').hide();
+      $('.card-homer').hide(); 
+      $('#catFact').text("");
     }, function(error) {
         $('.card-error').show();
         $('#show-errors').text(`There was an error processing your request: ${error}. Please try again.`);
@@ -68,9 +70,9 @@ $(document).ready(function() {
     let promise = CatFact.getCatFact(); 
       promise.then(function(response) {
       const body = JSON.parse(response);
-      console.log(body);
       $('#catFact').text(`${body.fact}`);
       $('.card-homer').show();   
+      $('.card-results').hide();
     }, function(error) {
       $('.card-error').show();
       $('#show-errors').text(`There was an error processing your request: ${error}. Please try again.`);
