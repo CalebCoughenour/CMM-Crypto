@@ -5,13 +5,25 @@
 <body>
   <div class="container">
     <div class="row">
-      <div class="col-6">
+      <div class="col-2">
         <div id="btc-logo"></div>
         <div id="btc-display"></div>
       </div>
-      <div class="col-6">
+      <div class="col-2">
         <div id="eth-logo"></div>
         <div id="eth-display"></div>
+      </div>
+      <div class="col-2">
+        <div id="USDT-logo"></div>
+        <div id="USDT-display"></div>
+      </div>
+      <div class="col-2">
+        <div id="BNB-logo"></div>
+        <div id="BNB-display"></div>
+      </div>
+      <div class="col-2">
+        <div id="usdc-logo"></div>
+        <div id="usdc-display"></div>
       </div>
     </div>
     <form id="search-form">
@@ -20,11 +32,20 @@
         <option value="BTC">Bitcoin - BTC</option>
         <option value="ETH">Ethereum - ETH</option>
         <option value="USDT">Tether - USDT</option>
+        <option value="BNB">Binance Coin - BNB</option>
+        <option value="USDC">USDC</option>
+        <option value="XRP">Ripple - XRP</option>
+        <option value="SOL">Solana - SOL</option>
+        <option value="LUNA">Terra - LUNA</option>
+        <option value="ADA">Cardano - ADA</option>
+        <option value="AVAX">Avalanche - AVAX</option>
       </select>
       <select id="interval" class="form-control">
         <option value="1d">1 Day</option>
         <option value="7d">7 Days</option>
         <option value="30d">30 Days</option>
+        <option value="365d">1 Year</option>
+        <option value="ytd">Year-To-Date</option> 
       </select>
       <button id="crypto-button" class="btn-success" type="submit">Search</button>
     </form>

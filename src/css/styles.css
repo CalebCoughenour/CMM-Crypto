@@ -2,13 +2,10 @@ img {
   height: 10%;
 }
 
-#cryptos {
+#cryptos, #interval {
   width: 15%;
 }
 
-#convert {
-  width: 15%;
-}
 
 .row {
   height: 50%;
