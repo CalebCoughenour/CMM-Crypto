@@ -43,13 +43,20 @@ $(document).ready(function() {
     e.preventDefault();
     let coin = $('#cryptos').val();
     let interval = $('#interval').val();
+    ('#show');
     let promise = UserSearch.getUserPrice(coin, interval);
     promise.then(function(response) {
       const body = JSON.parse(response);
+      let userPrice = body[0].price;
+      let userVolume = body[0][interval].volume;
+      let userIntervalPrice = body[0][interval].price_change;
+      let userIntervalSimple = parseFloat(userIntervalPrice).toFixed(2);
+      let userPriceSimple = parseFloat(userPrice).toFixed(2);
+      let userVolumeSimple = parseFloat(userVolume).toFixed(2);
       $('#coin-name').text(`${body[0].name}`);
-      $('#coin-price').text(`Current Price: $${body[0].price}`);
-      $('#price-change').text(`${interval} Price Change: ${body[0][interval].price_change}`);
-      $('#volume').text(`${interval} Volume: ${body[0][interval].volume}`);
+      $('#coin-price').text(`Current Price: $${userPriceSimple}`);
+      $('#price-change').text(`${interval} Price Change: ${userIntervalSimple}`);
+      $('#volume').text(`${interval} Volume: ${userVolumeSimple}`);
     }, function(error) {
       $('#show-errors').text(`There was an error processing your request: ${error}`);
     }

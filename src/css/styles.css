@@ -1,5 +1,11 @@
 img {
-  height: 10%;
+  margin-top: 20px;
+  height: 40%;
+  display: inline-block;
+}
+
+body {
+  background-color: gray;
 }
 
 #cryptos, #interval {
@@ -8,5 +14,23 @@ img {
 
 
 .row {
-  height: 50%;
-}
+  height: 150px;
+  text-align: center;
+  background-color: rgb(0, 0, 0);
+  color: aliceblue;
+  margin: auto;
+  box-sizing: border-box;
+  box-shadow:
+  0 1.6px 1.2px rgba(0, 0, 0, 0.063),
+  0 3.4px 2.7px rgba(0, 0, 0, 0.093),
+  0 5.8px 4.6px rgba(0, 0, 0, 0.115),
+  0 8.7px 6.9px rgba(0, 0, 0, 0.133),
+  0 12.5px 10px rgba(0, 0, 0, 0.15),
+  0 17.7px 14.2px rgba(0, 0, 0, 0.167),
+  0 25.1px 20.1px rgba(0, 0, 0, 0.185),
+  0 36.5px 29.2px rgba(0, 0, 0, 0.207),
+  0 56.3px 45px rgba(0, 0, 0, 0.237),
+  0 100px 80px rgba(0, 0, 0, 0.3);
+} 
+
+
