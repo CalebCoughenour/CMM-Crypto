@@ -9,7 +9,7 @@ export default class CryptoSomething {
         } else  {
           reject(request.response);
         }
-      }
+      };
       request.open("GET", url, true);
       request.send();
     });

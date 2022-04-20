@@ -20,15 +20,20 @@ $(document).ready(function() {
     }
   );
     
-  $('#crypto-button').click(function (e) {
+  $('#search-form').submit(function (e) {
     e.preventDefault();
     let coin = $('#cryptos').val();
-    let interval = $('#convert').val();
+    let interval = $('#interval').val();
+    console.log(coin);
     console.log(interval);
-    let promise = UserSearch.getUserPrice(coin, interval)
+    let promise = UserSearch.getUserPrice(coin, interval);
     promise.then(function(response) {
       const body = JSON.parse(response);
       console.log(body);
+      $('#coin-name').text(`${body[0].name}`);
+      $('#coin-price').text(`$${body[0].price}`);
+      $('#price-change').text(`${interval} Price Change: ${body[0][interval].price_change}`);
+      $('#volume').text(`${interval} Volume: ${body[0][interval].volume}`);
     }, function(error) {
       $('#show-errors').text(`There was an error processing your request: ${error}`);
     }

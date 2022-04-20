@@ -19,13 +19,19 @@
       <select id="cryptos" class="form-control">
         <option value="BTC">Bitcoin - BTC</option>
         <option value="ETH">Ethereum - ETH</option>
+        <option value="USDT">Tether - USDT</option>
       </select>
-      <select id="convert" class="form-control">
+      <select id="interval" class="form-control">
         <option value="1d">1 Day</option>
         <option value="7d">7 Days</option>
+        <option value="30d">30 Days</option>
       </select>
       <button id="crypto-button" class="btn-success" type="submit">Search</button>
     </form>
+    <div id="coin-name"></div>
+    <div id="coin-price"></div>
+    <div id="price-change"></div>
+    <div id="volume"></div>
     <div id="show-errors"></div>
 
     
