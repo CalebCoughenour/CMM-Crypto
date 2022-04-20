@@ -6,13 +6,29 @@ img {
 
 body {
   background-color: gray;
+  background-image: url('https://wallpapercave.com/wp/wp4678542.jpg');
 }
 
 #cryptos, #interval {
-  width: 15%;
+  width: 35%;
+  display: inline-block;
 }
 
-
+.card-error { 
+  display: none;
+  margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  position: relative;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: lightgray;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
+}
 .row {
   margin-top: 20px;
   margin-bottom: 50px;
@@ -63,3 +79,31 @@ body {
 }
 
 
+.card {
+  margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  background-color: lightgray;
+}
+
+.card-results {
+  display: none;
+  margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  position: relative;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: lightgray;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
+}
+
+.card-body {
+  text-align: center;
+  font-size: large;
+}

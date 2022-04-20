@@ -25,36 +25,55 @@
         </div>
       </div>
     </div>
-    <form id="search-form">
-      <label for="crypto-search"> <strong>Search for a Crypto:</strong></label>
-      <select id="cryptos" class="form-control">
-        <option value="BTC">Bitcoin - BTC</option>
-        <option value="ETH">Ethereum - ETH</option>
-        <option value="USDT">Tether - USDT</option>
-        <option value="BNB">Binance Coin - BNB</option>
-        <option value="USDC">USDC</option>
-        <option value="XRP">Ripple - XRP</option>
-        <option value="SOL">Solana - SOL</option>
-        <option value="LUNA">Terra - LUNA</option>
-        <option value="ADA">Cardano - ADA</option>
-        <option value="AVAX">Avalanche - AVAX</option>
-      </select>
-      <select id="interval" class="form-control">
-        <option value="1d">1 Day</option>
-        <option value="7d">7 Days</option>
-        <option value="30d">30 Days</option>
-        <option value="365d">1 Year</option>
-        <option value="ytd">Year-To-Date</option> 
-      </select>
-      <button id="crypto-button" class="btn-success" type="submit">Search</button>
-    </form>
-    <div id="coin-name"></div>
-    <div id="coin-price"></div>
-    <div id="price-change"></div>
-    <div id="volume"></div>
-    <div id="show-errors"></div>
-
-    
+    <div class="card">
+      <div class="card-body">
+        <h2 class="card-title"><strong>Search for a Crypto</strong></h2>
+        <div class="card-text">
+          <form id="search-form">            
+            <select id="cryptos" class="form-control">
+              <option value="BTC">Bitcoin - BTC</option>
+              <option value="ETH">Ethereum - ETH</option>
+              <option value="USDT">Tether - USDT</option>
+              <option value="BNB">Binance Coin - BNB</option>
+              <option value="USDC">USDC</option>
+              <option value="XRP">Ripple - XRP</option>
+              <option value="SOL">Solana - SOL</option>
+              <option value="LUNA">Terra - LUNA</option>
+              <option value="ADA">Cardano - ADA</option>
+              <option value="AVAX">Avalanche - AVAX</option>
+            </select>
+            <select id="interval" class="form-control">
+              <option value="1d">1 Day</option>
+              <option value="7d">7 Days</option>
+              <option value="30d">30 Days</option>
+              <option value="365d">1 Year</option>
+              <option value="ytd">Year-To-Date</option> 
+            </select>
+            <button id="crypto-button" class="btn-success" type="submit">Basic Info</button>
+          </form>
+          <form id="moreInfo">  
+            <button id="rabbitHole" class="btn-primary" type="click">More Info</button>
+            <div id="catFact"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="card-results">
+      <div class="card-body">
+        <h3 class="card-title">Results</h3>
+        <div class="card-text">    
+          <div id="coin-name"></div>
+          <div id="coin-price"></div>
+          <div id="price-change"></div>
+          <div id="volume"></div>
+        </div>
+      </div>
+    </div>
+    <div class="card-error">
+      <div class="card-body">
+        <div id="show-errors"></div>
+      </div>
+    </div>
   </div>
 </body>
-</html>
+</html> 

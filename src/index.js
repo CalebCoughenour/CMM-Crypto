@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
 import CryptoSomething from './js/ticker-api.js';
 import UserSearch from './js/user-input-api.js';
+import CatFact from './js/cat-facts-api.js';
 
 $(document).ready(function() {
  let promise = CryptoSomething.getPrices();
@@ -38,7 +39,6 @@ $(document).ready(function() {
     e.preventDefault();
     let coin = $('#cryptos').val();
     let interval = $('#interval').val();
-    ('#show');
     let promise = UserSearch.getUserPrice(coin, interval);
     promise.then(function(response) {
       const body = JSON.parse(response);
@@ -52,9 +52,26 @@ $(document).ready(function() {
       $('#coin-price').text(`Current Price: $${userPriceSimple}`);
       $('#price-change').text(`${interval} Price Change: ${userIntervalSimple}`);
       $('#volume').text(`${interval} Volume: ${userVolumeSimple}`);
+      $('.card-results').show();
+      $('.card-error').hide();
     }, function(error) {
-      $('#show-errors').text(`There was an error processing your request: ${error}`);
-    }
-  );
-});
+        $('.card-error').show();
+        $('#show-errors').text(`There was an error processing your request: ${error}. Please try again.`);
+      }
+    );
+  
+  $('#rabbitHole').click(function(e) {
+    e.preventDefault();
+    let promise = CatFact.getCatFact(); 
+      promise.then(function(response) {
+      const body = JSON.parse(response);
+      console.log(body);
+      $('#catFact').text(`${body.fact}`);   
+    }, function(error) {
+      $('.card-error').show();
+      $('#show-errors').text(`There was an error processing your request: ${error}. Please try again.`);
+    })
+  });
+
+  });
 });
