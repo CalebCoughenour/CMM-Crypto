@@ -4,14 +4,29 @@
 </head>
 <body>
   <div class="container">
-    <button id="crypto-button" class="btn-success" type="submit">Search</button>
-    <div id="btc-logo"></div>
-    <div id="btc-display"></div>
-
-    <div id="eth-display">
-
+    <div class="row">
+      <div class="col-6">
+        <div id="btc-logo"></div>
+        <div id="btc-display"></div>
+      </div>
+      <div class="col-6">
+        <div id="eth-logo"></div>
+        <div id="eth-display"></div>
+      </div>
     </div>
-
+    <form id="search-form">
+      <label for="crypto-search"> Search for a Crypto:</label>
+      <select id="cryptos" class="form-control">
+        <option value="BTC">Bitcoin - BTC</option>
+        <option value="ETH">Ethereum - ETH</option>
+      </select>
+      <select id="convert" class="form-control">
+        <option value="1d">1 Day</option>
+        <option value="7d">7 Days</option>
+      </select>
+      <button id="crypto-button" class="btn-success" type="submit">Search</button>
+    </form>
+    <div id="show-errors"></div>
 
     
   </div>

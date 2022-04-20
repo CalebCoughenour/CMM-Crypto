@@ -1,3 +1,15 @@
 img {
   height: 10%;
 }
+
+#cryptos {
+  width: 15%;
+}
+
+#convert {
+  width: 15%;
+}
+
+.row {
+  height: 50%;
+}
