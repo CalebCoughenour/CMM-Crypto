@@ -1,7 +1,7 @@
 {
-  "name": "template",
+  "name": "cmm-crypto",
   "version": "1.0.0",
-  "description": "",
+  "description": "Cryptocurrency coin tracker",
   "main": "index.js",
   "scripts": {
     "build": "webpack --mode development",
