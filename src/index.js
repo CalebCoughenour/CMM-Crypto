@@ -15,7 +15,7 @@ function displayCharacterDescription(description) {
 }
 
 function displayGif(response) {
-  let num = Math.floor(Math.random() * (5) + 1);
+  let num = Math.floor(Math.random() * (4-0) + 0);
   const url = response.data[num].images.downsized.url;
   $('.show-gif').html(`<img src='${url}' class="center">`);
 }
@@ -59,6 +59,8 @@ $(document).ready(function() {
       console.log(body);
       $('.gas-card').show();
       $('#fast-gas').text(`Fast: ${body.result.FastGasPrice} gwei`);
+      $('#safe-gas').text(`Normal: ${body.result.SafeGasPrice} gwei`);
+      $('#suggested-gas').text(`Suggested: ${body.result.ProposeGasPrice}`);
     });
   });
     
