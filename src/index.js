@@ -10,8 +10,6 @@ import SimpsonsQuote from './js/simpsons-api.js';
 $(document).ready(function() {
  let promise = CryptoSomething.getPrices();
   promise.then(function(response) {
-
-  
     const body = JSON.parse(response);
     let container = [];
     for (let i = 0; i < body.length; i++) {
@@ -42,7 +40,6 @@ $(document).ready(function() {
     let promise = UserSearch.getUserPrice(coin, interval);
     promise.then(function(response) {
       const body = JSON.parse(response);
-      console.log(body);
       let userPrice = body[0].price;
       let userVolume = body[0][interval].volume;
       let userIntervalPrice = body[0][interval].price_change;
@@ -81,7 +78,8 @@ $(document).ready(function() {
     let promise = SimpsonsQuote.getQuote();
       promise.then(function(response) {
         const body = JSON.parse(response);
-        $('#homer-quote').text(`Homer quote: "${body[0].quote}"`)  
+        console.log(body);
+        $('#homer-quote').text(`${body[0].character} quote: "${body[0].quote}"`)  
       }, function(error) {
         $('.card-error').show();
         $('#show-errors').text(`There was an error processing your request: ${error}. Please try again.`);
