@@ -10,27 +10,18 @@ import SimpsonsQuote from './js/simpsons-api.js';
 $(document).ready(function() {
  let promise = CryptoSomething.getPrices();
   promise.then(function(response) {
+
+  
     const body = JSON.parse(response);
-    let price = body[0].price;
-    let p = parseFloat(price).toFixed(2);
-    let price1 = body[1].price;
-    let p1 = parseFloat(price1).toFixed(2);
-    let price2 = body[2].price;
-    let p2 = parseFloat(price2).toFixed(4);
-    let price3 = body[3].price;
-    let p3 = parseFloat(price3).toFixed(2);
-  //   let promise = CryptoSomething.getPrices.();
-  // promise.then(function(response) {
-  //   const body = JSON.parse(response);
-  //   let container = [];
-  //   body.forEach(function (coin) {
-  //     let src = coin.logo_url;
-  //     container += "<img src='" + "'>";
-  //   });
-  //   $('#btc-logo').html(container[0]);
-  //   $('#eth-logo').html(container[1]);
-  //   $('#USDT-logo').html(container[2]);
-  //   $('#BNB-logo').html(container[3]);
+    let container = [];
+    for (let i = 0; i < body.length; i++) {
+      let price = parseFloat(body[i].price).toFixed(2);
+      container.push(price);
+    }    
+    $('#btc-display').html(container[0]);
+    $('#eth-display').html(container[1]);
+    $('#USDT-display').html(container[2]);
+    $('#BNB-display').html(container[3]);
     let src = body[0].logo_url;
     let src1 = body[1].logo_url;
     let src2 = body[2].logo_url;
@@ -39,10 +30,6 @@ $(document).ready(function() {
     $('#eth-logo').html("<img src='" + src1 + "'>");
     $('#USDT-logo').html("<img src='" + src2 + "'>");
     $('#BNB-logo').html("<img src='" + src3 + "'>");
-    $('#btc-display').text(`BTC price: $${p}`);
-    $('#eth-display').text(`ETH price: $${p1}`);
-    $('#USDT-display').text(`USDT price: $${p2}`);
-    $('#BNB-display').text(`BNB price: $${p3}`);
     }, function(error) {
       $('#show-errors').text(`There was an error processing your request: ${error}`);
     }
