@@ -11,6 +11,10 @@ body {
   background-image: url('https://wallpapercave.com/wp/wp4678542.jpg');
 }
 
+#gas-button {
+  margin-bottom: 10px;
+}
+
 #cryptos, #interval {
   width: 35%;
   display: inline-block;
@@ -118,7 +122,25 @@ p#character-quote {
   color: #fff;
 }
 
-.show-gif {
+.center {
+  display: block;
   margin-left: auto;
   margin-right: auto;
+  width: 50%;
+}
+
+.gas-card {
+  display: none;
+  margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  position: relative;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: lightgray;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
 }

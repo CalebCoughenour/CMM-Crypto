@@ -8,16 +8,16 @@ import CatFact from './js/cat-facts-api.js';
 import SimpsonsQuote from './js/simpsons-api.js';
 import HomerQuote from './js/homer-api.js';
 import GiphyService from './js/giphy-api.js';
+import GasTracker from './js/gas-tracker-api.js'
 
 function displayCharacterDescription(description) {
   $('#character-quote').text(`The character is: ${description}!`);
 }
 
 function displayGif(response) {
-  const url = response.data[0].images.downsized.url;
-  // console.log(url);
-  // console.log("I exist.")
-  $('.show-gif').html(`<img src='${url}'>`);
+  let num = Math.floor(Math.random() * (5) + 1);
+  const url = response.data[num].images.downsized.url;
+  $('.show-gif').html(`<img src='${url}' class="center">`);
 }
 
 function displayErrors(error) {
@@ -50,6 +50,17 @@ $(document).ready(function() {
       $('#show-errors').text(`There was an error processing your request: ${error}`);
     }
   );
+
+  $('#gas-button').click(function(e) {
+    e.preventDefault();
+    let promise = GasTracker.getGas();
+    promise.then(function(response) {
+      const body = JSON.parse(response);
+      console.log(body);
+      $('.gas-card').show();
+      $('#fast-gas').text(`Fast: ${body.result.FastGasPrice} gwei`);
+    });
+  });
     
   $('#search-form').submit(function (e) {
     e.preventDefault();
@@ -123,6 +134,7 @@ $(document).ready(function() {
           throw Error (`Giphy API error: ${giphyResponse.message}`);
         }
         displayGif(body);
+        $('.show-errors').text("");
       })
       .catch(function(error) {
         displayErrors(error.message);
