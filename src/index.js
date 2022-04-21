@@ -94,9 +94,11 @@ $(document).ready(function() {
     let promise = SimpsonsQuote.getQuote();
       promise.then(function(response) {
         const body = JSON.parse(response);
-        $('#homer-quote').text(body[0].quote)
+        $('#homer-quote').text(`Homer quote: "${body[0].quote}"`)  
+      }, function(error) {
+        $('.card-error').show();
+        $('#show-errors').text(`There was an error processing your request: ${error}. Please try again.`);
       })
-  })  
+    })  
   });
 });  
-
