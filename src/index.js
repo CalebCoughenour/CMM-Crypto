@@ -10,12 +10,17 @@ import HomerQuote from './js/homer-api.js';
 import GiphyService from './js/giphy-api.js';
 
 function displayCharacterDescription(description) {
-  $('.character-quote').text(`The character is: ${description}!`);
+  $('#character-quote').text(`The character is: ${description}!`);
 }
 
 function displayGif(response) {
   const url = response.data[0].images.downsized.url;
+  console.log(url);
   $('.show-gif').html(`<img src='${url}'>`);
+}
+
+function displayErrors(error) {
+  $('.show-errors').text(`${error}`);
 }
 
 
@@ -107,9 +112,20 @@ $(document).ready(function() {
           throw Error ('You are broken!');
         }
         const characterDescription = `${body[0].character}`;
-        
+        displayCharacterDescription(characterDescription);
+        console.log(characterDescription);
         return GiphyService.getGif(characterDescription);
-      });    
+        // $('.card-character-description').show();
+      })
+      promise.then(function(giphyResponse) {
+        if (giphyResponse instanceof Error) {
+          throw Error (`Giphy API error: ${giphyResponse.message}`);
+        }
+        displayGif(giphyResponse);
+      })
+      .catch(function(error) {
+        displayErrors(error.message);
+      })    
     });
   });
 });  
