@@ -1,8 +1,8 @@
-export default class SimpsonsQuote {
+export default class HomerQuote {
   static getQuote() {
     return new Promise(function(resolve, reject) {
       let request = new XMLHttpRequest();
-      const url = `https://thesimpsonsquoteapi.glitch.me/quotes?`;
+      const url = `https://thesimpsonsquoteapi.glitch.me/quotes?character=homer`;
       request.onload = function() {
         if (this.status === 200) {
           resolve(request.response); 

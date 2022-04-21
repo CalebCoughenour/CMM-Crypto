@@ -6,6 +6,18 @@ import CryptoSomething from './js/ticker-api.js';
 import UserSearch from './js/user-input-api.js';
 import CatFact from './js/cat-facts-api.js';
 import SimpsonsQuote from './js/simpsons-api.js';
+import HomerQuote from './js/homer-api.js';
+import GiphyService from './js/giphy-api.js';
+
+function displayCharacterDescription(description) {
+  $('.character-quote').text(`The character is: ${description}!`);
+}
+
+function displayGif(response) {
+  const url = response.data[0].images.downsized.url;
+  $('.show-gif').html(`<img src='${url}'>`);
+}
+
 
 $(document).ready(function() {
  let promise = CryptoSomething.getPrices();
@@ -75,15 +87,30 @@ $(document).ready(function() {
     });
   $('#homer-gif').click(function(e) {
     e.preventDefault();
-    let promise = SimpsonsQuote.getQuote();
+    let promise = HomerQuote.getQuote();
       promise.then(function(response) {
         const body = JSON.parse(response);
-        console.log(body);
-        $('#homer-quote').text(`${body[0].character} quote: "${body[0].quote}"`)  
+        $('#homer-quote').text(`${body[0].character} quote: "${body[0].quote}"`);  
       }, function(error) {
         $('.card-error').show();
         $('#show-errors').text(`There was an error processing your request: ${error}. Please try again.`);
-      })
-    })  
+      });
+    });
+  $('#new-character').click(function(e) {
+    e.preventDefault();
+    let promise = SimpsonsQuote.getQuote();
+    SimpsonsQuote.getQuote();
+      promise.then(function(response) {
+        const body = JSON.parse(response);
+        console.log(body);
+        if (response instanceof Error) {
+          throw Error ('You are broken!');
+        }
+        const characterDescription = `${body[0].character}`;
+        
+        return GiphyService.getGif(characterDescription);
+      });    
+    });
   });
 });  
+
