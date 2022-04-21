@@ -4,11 +4,19 @@ img {
   margin-right: auto;
   height: 40%;
   display: inline-block;
+  border: 2px solid black;
 }
 
 body {
   background-color: gray;
   background-image: url('https://wallpapercave.com/wp/wp4678542.jpg');
+}
+
+#new-character {
+  margin-bottom: 10px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #gas-button {
@@ -22,6 +30,14 @@ body {
 
 #rabbitHole {
   margin-bottom: 20px;
+}
+
+#homer-gif:hover {
+  cursor: pointer;
+}
+
+#homer-quote {
+  text-align: center;
 }
 
 .card-error { 
