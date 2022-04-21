@@ -9,6 +9,7 @@ import SimpsonsQuote from './js/simpsons-api.js';
 import HomerQuote from './js/homer-api.js';
 import GiphyService from './js/giphy-api.js';
 import GasTracker from './js/gas-tracker-api.js'
+import CryptoSearch from './js/ticker-search-api.js';
 
 function displayCharacterDescription(description) {
   $('#character-quote').text(`The character is: ${description}!`);
@@ -56,11 +57,27 @@ $(document).ready(function() {
     let promise = GasTracker.getGas();
     promise.then(function(response) {
       const body = JSON.parse(response);
-      console.log(body);
       $('.gas-card').show();
       $('#fast-gas').text(`Fast: ${body.result.FastGasPrice} gwei`);
       $('#safe-gas').text(`Normal: ${body.result.SafeGasPrice} gwei`);
       $('#suggested-gas').text(`Suggested: ${body.result.ProposeGasPrice}`);
+    });
+  });
+
+  $('#coin-search-button').click(function(e) {
+    e.preventDefault();
+    let ticker = $('#coin-search').val().toUpperCase();
+    let promise = CryptoSearch.getCoins(ticker);
+    promise.then(function(response) {
+    const body = JSON.parse(response);
+    console.log(body);
+    $('.card-results').show();
+    $('#coin-name').text(`${body[0].name}`);
+    $('#coin-price').text(`Current Price: ${parseFloat(body[0].price).toFixed(2)}`);
+    $('#price-change').text("");
+    $('#volume').text(`One Day Volume: $${body[0]["1d"].volume}`);
+    $('#market-cap').text(`Market Cap: ${body[0].market_cap}`)
+
     });
   });
     
@@ -81,9 +98,11 @@ $(document).ready(function() {
       $('#coin-price').text(`Current Price: $${userPriceSimple}`);
       $('#price-change').text(`${interval} Price Change: ${userIntervalSimple}`);
       $('#volume').text(`${interval} Volume: ${userVolumeSimple}`);
+      $('#market-cap').text(`Market Cap: $${body[0].market_cap}`);
       $('.card-results').show();
       $('.card-error').hide();
       $('.card-homer').hide(); 
+      $('card-character-description').hide();
       $('#catFact').text("");
     }, function(error) {
         $('.card-error').show();
@@ -127,11 +146,9 @@ $(document).ready(function() {
         }
         characterDescription = `${body[0].character}`;
         displayCharacterDescription(characterDescription);
-        console.log(typeof(characterDescription));
         return GiphyService.getGif(characterDescription);
       }).then(function(giphyResponse) {
         const body = giphyResponse;
-        console.log(body);
         if (giphyResponse instanceof Error) {
           throw Error (`Giphy API error: ${giphyResponse.message}`);
         }
@@ -140,8 +157,7 @@ $(document).ready(function() {
       })
       .catch(function(error) {
         displayErrors(error.message);
-      })    
+      });  
     });
   });
-});  
-
+});
