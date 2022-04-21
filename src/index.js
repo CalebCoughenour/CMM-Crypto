@@ -5,6 +5,7 @@ import './css/styles.css';
 import CryptoSomething from './js/ticker-api.js';
 import UserSearch from './js/user-input-api.js';
 import CatFact from './js/cat-facts-api.js';
+import SimpsonsQuote from './js/simpsons-api.js';
 
 $(document).ready(function() {
  let promise = CryptoSomething.getPrices();
@@ -18,6 +19,18 @@ $(document).ready(function() {
     let p2 = parseFloat(price2).toFixed(4);
     let price3 = body[3].price;
     let p3 = parseFloat(price3).toFixed(2);
+  //   let promise = CryptoSomething.getPrices.();
+  // promise.then(function(response) {
+  //   const body = JSON.parse(response);
+  //   let container = [];
+  //   body.forEach(function (coin) {
+  //     let src = coin.logo_url;
+  //     container += "<img src='" + "'>";
+  //   });
+  //   $('#btc-logo').html(container[0]);
+  //   $('#eth-logo').html(container[1]);
+  //   $('#USDT-logo').html(container[2]);
+  //   $('#BNB-logo').html(container[3]);
     let src = body[0].logo_url;
     let src1 = body[1].logo_url;
     let src2 = body[2].logo_url;
@@ -42,6 +55,7 @@ $(document).ready(function() {
     let promise = UserSearch.getUserPrice(coin, interval);
     promise.then(function(response) {
       const body = JSON.parse(response);
+      console.log(body);
       let userPrice = body[0].price;
       let userVolume = body[0][interval].volume;
       let userIntervalPrice = body[0][interval].price_change;
@@ -75,7 +89,14 @@ $(document).ready(function() {
       $('.card-error').show();
       $('#show-errors').text(`There was an error processing your request: ${error}. Please try again.`);
     });
+  $('#homer-gif').click(function(e) {
+    e.preventDefault();
+    let promise = SimpsonsQuote.getQuote();
+      promise.then(function(response) {
+        const body = JSON.parse(response);
+        $('#homer-quote').text(body[0].quote)
+      })
+  })  
   });
 });  
-
 
