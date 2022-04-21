@@ -9,6 +9,6 @@ export default class GiphyService {
     })
     .catch(function(error) {
       return Error(error);
-    }) 
+    }); 
   }
 }

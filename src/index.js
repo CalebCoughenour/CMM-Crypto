@@ -14,9 +14,9 @@ function displayCharacterDescription(description) {
 }
 
 function displayGif(response) {
-  const url = response.data.images.downsized.url;
-  console.log(url);
-  console.log("I exist.")
+  const url = response.data[0].images.downsized.url;
+  // console.log(url);
+  // console.log("I exist.")
   $('.show-gif').html(`<img src='${url}'>`);
 }
 
@@ -109,25 +109,20 @@ $(document).ready(function() {
     SimpsonsQuote.getQuote();
       promise.then(function(response) {
         const body = JSON.parse(response);
-        console.log(body);
         if (response instanceof Error) {
           throw Error ('You are broken!');
         }
         characterDescription = `${body[0].character}`;
-        console.log(characterDescription);
         displayCharacterDescription(characterDescription);
+        console.log(typeof(characterDescription));
         return GiphyService.getGif(characterDescription);
-      });
-      let promiseTwo = GiphyService.getGif(characterDescription);
-      characterDescription = `${body[0].character}`;
-      promiseTwo.then(function(response) {
-        const body = JSON.parse(response)
-        
-        if (response instanceof Error) {
-          throw Error (`Giphy API error: ${response.message}`);
+      }).then(function(giphyResponse) {
+        const body = giphyResponse;
+        console.log(body);
+        if (giphyResponse instanceof Error) {
+          throw Error (`Giphy API error: ${giphyResponse.message}`);
         }
-        displayGif(body.data[0]);
-        console.log(5);
+        displayGif(body);
       })
       .catch(function(error) {
         displayErrors(error.message);

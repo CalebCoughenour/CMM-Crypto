@@ -1,5 +1,7 @@
 img {
   margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
   height: 40%;
   display: inline-block;
 }
@@ -112,3 +114,11 @@ body {
   font-size: large;
 }
 
+p#character-quote {
+  color: #fff;
+}
+
+.show-gif {
+  margin-left: auto;
+  margin-right: auto;
+}
