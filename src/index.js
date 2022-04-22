@@ -70,7 +70,6 @@ $(document).ready(function() {
     let promise = CryptoSearch.getCoins(ticker);
     promise.then(function(response) {
     const body = JSON.parse(response);
-    console.log(body);
     $('.card-results').show();
     $('#coin-name').text(`${body[0].name}`);
     $('#coin-price').text(`Current Price: ${parseFloat(body[0].price).toFixed(2)}`);
